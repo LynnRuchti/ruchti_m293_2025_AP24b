@@ -6,15 +6,16 @@ html, body {
   background-color: #ece8d7;
 }
 
-/* Seiteninhalt zentriert innerhalb des Viewports */
+
 #page-wrapper {
-  min-height: calc(100vh - 80px); /* reserviert Platz für Footer */
+  min-height: calc(100vh - 80px); 
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px;
   box-sizing: border-box;
 }
+
 
     #blog-placeholder {
       width: 100%;
