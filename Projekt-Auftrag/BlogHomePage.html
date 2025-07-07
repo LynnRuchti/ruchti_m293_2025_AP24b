@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="BlogHomePage.css" />
+  <title>FunLog</title>
+</head>
+<body>
+<div class="wrapper"><main>
+  <!-- Slider -->
+  <div class="slider">
+    <button class="arrow left">&#10094;</button>
+    <button class="arrow right">&#10095;</button>
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- Blog Cards Placeholder -->
+  <div class="blog-grid">
+    <div id="blog-placeholder-0"></div>
+    <div id="blog-placeholder-1"></div>
+    <div id="blog-placeholder-2"></div>
+    <div id="blog-placeholder-3"></div>
+    <div id="blog-placeholder-4"></div>
+    <div id="blog-placeholder-5"></div>
+    <div id="blog-placeholder-6"></div>
+    <div id="blog-placeholder-7"></div>
+    <div id="blog-placeholder-8"></div>
+    <div id="blog-placeholder-9"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    let actualBlogCount = 0;
+    async function loadData() {
+      const response = await fetch('Blogs.json');
+      const data = await response.json();
+      setupSlider(data);
+      setupCards(data);
+    }
+
+    function setupSlider(data) {
+      const slider = document.querySelector('.slider');
+
+      data.forEach((entry, index) => {
+        if(entry.Actuality=="true"){
+        const slide = document.createElement('div');
+        slide.classList.add('slide');
+        if (index === 0) slide.classList.add('active');
+
+       
+        const link = document.createElement('a');
+        link.href = `SingleBlogPage.html?id=${entry.id}`;
+        link.style.display = 'flex';
+        link.style.flexDirection = 'column';
+        link.style.justifyContent = 'center';
+        link.style.alignItems = 'center';
+        link.style.width = '100%';
+        link.style.height = '100%';
+        link.style.textDecoration = 'none';
+        link.style.backgroundImage = `url('${entry.Image}')`;
+        link.style.backgroundSize = 'cover';
+        link.style.backgroundPosition = 'center';
+
+        const h2 = document.createElement('h2');
+        h2.textContent = entry.Article_Title;
+        h2.style.position = 'relative';
+        h2.style.zIndex = '10';
+        h2.style.padding = '0 60px';
+        h2.style.background = 'rgba(0,0,0,0.4)';
+        h2.style.color = 'white';
+        h2.style.textAlign = 'center';
+
+        link.appendChild(h2);
+        slide.appendChild(link);
+        slider.insertBefore(slide, slider.querySelector('.arrow.left'));
+        actualBlogCount++;
+      }
+      });
+
+      const dotsContainer = document.querySelector('.dots');
+      dotsContainer.innerHTML = '';
+      for(let i = 0; i < actualBlogCount; i++){
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dotsContainer.appendChild(dot);
+      };
+
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+          dots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      document.querySelector('.arrow.left').addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      document.querySelector('.arrow.right').addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+
+      showSlide(0);
+    }
+
+    function setupCards(data) {
+      data.forEach((entry, i) => loadBlogEntry(i, entry));
+    }
+
+    async function loadBlogEntry(i, entry) {
+      const templateText = await fetch('./Molecule/BlogElement.html').then(res => res.text());
+      const previewText = entry.Article.split(/\s+/).slice(0, 20).join(' ') + '...';
+
+      const html = templateText
+        .replace('{{title}}', entry.Article_Title)
+        .replace('{{previewText}}', previewText)
+        .replace('{{id}}', entry.id)
+        .replace('{{image}}', entry.Image)
+        .replace('{{actuality}}', entry.Actuality);
+
+      const placeholder = document.getElementById('blog-placeholder-' + i);
+      if (placeholder) {
+        placeholder.innerHTML = html;
+      }
+    }
+
+    window.onload = loadData;
+  </script>
+
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('expanded');
+    }
+  </script>
+</main>
+<footer>
+  <p style="padding: 10px">&copy; 2025 TBZ Modul 293 Project. All texts belong to chatGPT. Images are form the web and don't belong to me.</p>
+  <p>
+    <a href="/AuthorPage.html">Authors</a> | 
+    <a href="/NewsLetterPage.html">News Letter</a> | 
+    <a href="/AboutUs.html">About Us</a>
+  </p>
+</footer>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Author Profile</title>
+    <link rel="stylesheet" href="SingleAuthorPage.css" />
+</head>
+<body>
+  <div class="wrapper"><main>
+  <div class="container">
+    <div id="blog-placeholder"></div>
+    <div class="blog-list" id="blog-list"></div>
+  </div>
+
+  <script>
+    let blogCount = 0;
+
+    async function loadData() {
+      const params = new URLSearchParams(window.location.search);
+      const creatorId = parseInt(params.get("id"));
+
+      try {
+        const [blogsResponse, creatorsResponse] = await Promise.all([
+          fetch('Blogs.json'),
+          fetch('Creators.json')
+        ]);
+
+        const blogs = await blogsResponse.json();
+        const creators = await creatorsResponse.json();
+
+        const creator = creators.find(c => c.id === creatorId);
+        const creatorBlogs = blogs.filter(blog => blog.creator_id === creatorId);
+        blogCount = creatorBlogs.length;
+
+        if (!creator) {
+          document.getElementById('blog-placeholder').innerHTML =
+            "<p style='color: red; text-align: center;'>Autor nicht gefunden.</p>";
+          return;
+        }
+
+        // Render profile card
+        const avatarContent = creator.Profile_Img
+          ? ""
+          : creator.Username[0].toUpperCase();
+
+        const profileHTML = `
+          <div class="profile-card">
+            <div class="avatar" style="background-image: url('${creator.Profile_Img || ""}')">
+              ${avatarContent}
+            </div>
+            <p><strong>@${creator.Username}</strong></p>
+            <p class="stats">${creator.Followers} Followers</p>
+            <p class="stats">Blogs Posted:</p>
+            <p class="blog-count">${blogCount}</p>
+            <button class="go-back-btn" onclick="history.back()">Go Back</button>
+          </div>
+        `;
+
+        document.getElementById('blog-placeholder').innerHTML = profileHTML;
+
+        for (let i = 0; i < creatorBlogs.length; i++) {
+          await loadBlogEntry(creatorBlogs[i]);
+        }
+      } catch (error) {
+        console.error("Error, Blog can't load:", error);
+        document.getElementById('blog-placeholder').innerHTML =
+          "<p style='color: red; text-align: center;'>Error, can't load Blog.</p>";
+      }
+    }
+
+    async function loadBlogEntry(entry) {
+      const templateText = await fetch('./Molecule/BlogElement.html').then(res => res.text());
+      const previewText = entry.Article.split(/\s+/).slice(0, 20).join(' ') + '...';
+
+      const html = templateText
+        .replace('{{title}}', entry.Article_Title)
+        .replace('{{previewText}}', previewText)
+        .replace('{{id}}', entry.id)
+        .replace('{{image}}', entry.Image)
+        .replace('{{creator_id}}', entry.creator_id);
+
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = html;
+      document.getElementById('blog-list').appendChild(wrapper);
+    }
+
+    window.onload = loadData;
+  </script>
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('expanded');
+    }
+  </script>
+</main>
+  <footer>
+  <p style="padding: 10px">&copy; 2025 TBZ Module 293 Project. All texts belong to chatGPT. Images are form the web and don't belong to me.</p>
+  <p>
+    <a href="/AuthorPage.html">Authors</a> | 
+    <a href="/NewsLetterPage.html">News Letter</a> | 
+    <a href="/AboutUs.html">About Us</a>
+  </p>
+</footer>
+</div>
+</body>
+
+</html>

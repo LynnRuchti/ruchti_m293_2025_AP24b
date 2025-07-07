@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog</title>
+    <link rel="stylesheet" href="SingleBlogPage.css" />
+</head>
+<body>
+  <div class="wrapper">
+<main>
+  <div id="blog-placeholder"></div>
+
+  <script>
+    async function loadBlogEntry() {
+      const params = new URLSearchParams(window.location.search);
+      const blogId = parseInt(params.get("id"));
+
+      try {
+        const [blogsResponse, creatorsResponse] = await Promise.all([
+          fetch('Blogs.json'),
+          fetch('Creators.json')
+        ]);
+
+        const blogs = await blogsResponse.json();
+        const creators = await creatorsResponse.json();
+
+        const entry = blogs[blogId - 1];
+        const creator = creators[entry.creator_id - 1];
+
+        if (!entry || !creator) {
+          document.getElementById('blog-placeholder').innerHTML = "<p style='color:red; text-align:center;'>Blog not found.</p>";
+          return;
+        }
+
+        const html = `
+          <div class="blog-card">
+            <h1>${entry.Article_Title}</h1>
+            <img src="${entry.Image}" alt="Article img" />
+            <p class="blog-text">${entry.Article}</p>
+
+            <div class="author-card">
+              <a href="SingleAuthorPage.html?id=${creator.id}" class="author-info">
+                <div class="author-avatar" style="${creator.Profile_Img ? `background-image: url('${creator.Profile_Img}');` : ''}">
+                  ${!creator.Profile_Img ? creator.Username[0].toUpperCase() : ''}
+                </div>
+                <div>
+                  <p><strong>@${creator.Username}</strong></p>
+                  <p style="font-size: 12px;">${creator.Followers} Followers</p>
+                </div>
+              </a>
+              <p><strong>Created at:</strong> ${entry.Creation_Date}</p>
+              <div><strong>Tags:</strong> <div class="tag-container">${entry.Hashtags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div></div>
+              <p><strong>Likes:</strong> ${entry.Likes}</p>
+              <p><strong>Comments:</strong> ${entry.Comment_Count}</p>
+            </div>
+
+            <button class="back-button" onclick="goBack()">Go Back</button>
+          </div>
+        `;
+
+        document.getElementById('blog-placeholder').innerHTML = html;
+      } catch (error) {
+        console.error("Error, can't load Blog:", error);
+        document.getElementById('blog-placeholder').innerHTML = "<p style='color:red; text-align:center;'>Blog can't load.</p>";
+      }
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    window.onload = loadBlogEntry;
+  </script>
+  </main>
+<footer>
+  <p style="padding: 10px">&copy; 2025 TBZ Modul 293 Project. All texts belong to chatGPT. Images are form the web and don't belong to me.</p>
+  <p>
+    <a href="/AuthorPage.html">Authors</a> | 
+    <a href="/NewsLetterPage.html">News Letter</a> | 
+    <a href="/AboutUs.html">About Us</a>
+  </p>
+</footer>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+body {
+  display: block;
+  background-color: #ece8d7;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-card {
+    background-color: #2c4960;
+    color: white;
+    padding: 60px 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 80px 20px 20px 20px;
+    position: relative;
+  }
+
+    .avatar {
+      position: absolute;
+      top: -48px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background-color: #666;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .stats {
+      font-size: 14px;
+      color: #dcdcdc;
+    }
+
+    .blog-count {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .go-back-btn {
+      margin-top: 20px;
+      background-color: #d6df9b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 24px;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+    }
+
+    .go-back-btn:hover {
+      background-color: #c1cd88;
+    }
+
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+    .card {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #2e3b5b;
+  color: white;
+}
+
+.card-header {
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+
+}
+
+.card-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.5s ease;
+}
+
+.card.expanded .card-content {
+  max-height: 300px;
+  padding: 20px;
+}
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin: 10px 0;
+      color: white;
+    }
+
+    .card p {
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4CAF50; 
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .card a {
+      display: inline-block;
+      margin: 1rem auto 1.5rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #e0e6a0; 
+      color: #2e3b5b;            
+      border: 2px solid #8ba5b2;
+      border-radius: 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      background-color: #d5db87;
+      transform: translateY(-2px);
+    }
+
+.blog-list {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .blog-list {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+   main {
+      padding: 40px;
+    }
+
+    footer {
+      background-color: #2e3b5b; 
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 0;
+    }
+        footer p {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }

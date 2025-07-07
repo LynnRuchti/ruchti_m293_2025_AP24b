@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "Username": "author",
+    "Followers": 6,
+    "Profile_Img": "https://www.clevergirlauthor.com/wp-content/uploads/2022/07/How-to-become-an-author.png"
+  },
+  {
+    "id": 2,
+    "Username": "wild_inkling",
+    "Followers": 152,
+    "Profile_Img": "https://preview.redd.it/snoovatar/avatars/a8610345-4658-4b5d-83f0-f666d2e3f12e-headshot.png?width=256&height=256&crop=smart&auto=webp&s=2c88fb22f73c2fe11f86d1b69b310acd428c98eb"
+  },
+  {
+    "id": 3,
+    "Username": "lore_lens",
+    "Followers": 87,
+    "Profile_Img": "https://images.uesp.net/a/ab/ON-item-Jagged_Lens_of_Compulsion.jpg"
+  },
+  {
+    "id": 4,
+    "Username": "FactTwister",
+    "Followers": 231,
+    "Profile_Img": "https://tse2.mm.bing.net/th/id/OIP.8L8-bG4rjdU69H1MR05ANAHaH7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  }
+]

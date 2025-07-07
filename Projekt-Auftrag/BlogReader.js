@@ -1,0 +1,195 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+const blog = [
+  {
+    "id": 1,
+    "Title": "Regenwald Tiere",
+    "Image": "https://www.planet-wissen.de/tiere-im-regenwald-134~_v-gseagaleriexl.jpg",
+    "Article_Title": "Geheime Allianz im Regenwald entdeckt - Tiere planen Öko-Revolution!",
+    "Article": "Im Herzen des Amazonas-Regenwalds hat ein Forschungsteam der Universität Tübingen eine sensationelle Entdeckung gemacht: Offenbar haben sich verschiedene Tierarten zu einer bisher unbekannten Allianz zusammengeschlossen, um den Regenwald gegen menschliche Eingriffe zu verteidigen. <br>Angeführt wird die Bewegung angeblich von einem charismatischen Kapuzineraffen mit dem Codenamen \"El Mono Verde\", der in nächtlichen Treffen mit Tukanen, Jaguaren und sogar Anakondas kommuniziert - mithilfe von Tänzen, Geruchsbotschaften und geheimen Blätter-Codes. Ein entlaufener Papagei, der fließend Portugiesisch spricht, wurde von Wissenschaftlern abgehört und soll Sätze wie \"Operation Blattsturm beginnt bei Sonnenaufgang\" geäußert haben. <br>Laut ersten Berichten sollen die Tiere begonnen haben, Holzfäller mit improvisierten Schlammlawinen zu vertreiben und Drohnen durch gezielte Mangowürfe vom Himmel zu holen. Ein Wildschwein mit einem Stirnband aus Lianen wurde sogar dabei beobachtet, wie es ein Warnschild mit dem Schriftzug \"Betreten verboten - Wildnis im Aufstand\" in den Boden rammte.<br><br>Ob es sich um eine neue Form tierischer Intelligenz oder um die Auswirkung illegaler Kakao-Fermentation handelt, ist derzeit noch unklar. Sicher ist nur: Der Regenwald schlägt zurück - und zwar mit Stil.",
+    "creator_id": 2,
+    "Hashtags": ["#Regenwald", "#Tiere", "#Ökorevolution", "#ElMonoVerde"],
+    "Likes": 842,
+    "Comment_Count": 57,
+    "Creation_Date": "2025-05-03",
+    "Actuality": "false"
+  },
+  {
+    "id": 2,
+    "Title": "Wie entsteht ein Regenbogen",
+    "Image": "https://th.bing.com/th/id/OIP.ednm4UuD3lZfml6u_dyCJAHaEd?rs=1&pid=ImgDetMain",
+    "Article_Title": "Wissenschaft schockiert - Regenbögen doch kein Lichtphänomen!",
+    "Article": "Neue Forschungen der Universität Atlantis haben ergeben, dass Regenbögen nicht durch Lichtbrechung entstehen, sondern von einer uralten Spezies fliegender Chamäleons gemalt werden. Diese \"Spektrum-Drakes\", wie sie genannt werden, erscheinen nur bei Sonnenschein und Regen - ihrem bevorzugten Arbeitsklima.<br>Mit ihren schillernden Schwänzen \"pinseln\" sie Regenbögen in die Luft, angeblich als Kommunikationsmittel zwischen ihren Kolonien. Ein Forscher behauptet, einen gesehen zu haben, wie er die Farben sortierte, bevor er mit einem zufriedenen Schnattern verschwand.<br>Die NASA zeigt sich ratlos, während Influencer bereits bunte Schutzhelme gegen mögliche Farbattacken verkaufen. Ob Mythos oder Wahrheit - sicher ist: Regenbögen sind magischer, als wir dachten.",
+    "creator_id": 3,
+    "Hashtags": ["#Regenbogen", "#Chamäleons", "#Magie", "#Forschung"],
+    "Likes": 671,
+    "Comment_Count": 34,
+    "Creation_Date": "2025-04-28",
+    "Actuality": "false"
+  },
+  {
+    "id": 3,
+    "Title": "Beste Pasta Rezepte",
+    "Image": "https://image.stern.de/6265546/t/Ff/v4/w1440/r1.7778/-/carbonara.jpg",
+    "Article_Title": "Italien in Aufruhr - Geheimes Pasta-Rezept sorgt für diplomatische Krise!",
+    "Article": "Ein mysteriöses Rezeptbuch mit dem Titel \"Pasta Proibita\" ist in Neapel aufgetaucht - und bringt das Land ins Wanken. Angeblich enthält es das originale Carbonara-Rezept, das mit... Zimt und einem Hauch Espresso zubereitet wird.<br>Italiens Koch-Elite tobt: Der Sternekoch Giovanni Bellissimo forderte in einer Pressekonferenz sogar den \"kulinarischen Notstand\". Die Pasta jedoch erobert TikTok im Sturm - Millionen probieren das Verbotene und schwärmen von \"der Carbonara, die die Seele küsst\".<br>Rom erwägt nun ein nationales Pasta-Schutzgesetz. Die Frage bleibt: Revolution oder Sakrileg?",
+    "creator_id": 1,
+    "Hashtags": ["#PastaProibita", "#Carbonara", "#FoodDrama", "#TikTokTrend"],
+    "Likes": 1124,
+    "Comment_Count": 89,
+    "Creation_Date": "2025-06-01",
+    "Actuality": "true"
+  },
+  {
+    "id": 4,
+    "Title": "Blauer Leguan Lebensraum",
+    "Image": "https://tse1.mm.bing.net/th/id/OIP.9JrUNSx7dII9ILS-Z57wzQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "Article_Title": "Blauer Leguan entdeckt eigenes Inselparadies - Menschen strikt unerwünscht!",
+    "Article": "Auf einer winzigen, bislang unkartierten Insel vor den Cayman Islands wurde ein geheimer Rückzugsort der blauen Leguane entdeckt - komplett von der Außenwelt abgeschirmt.<br>Dort leben sie angeblich in Baumhäusern aus Mangrovenholz und betreiben nachhaltigen Gemüseanbau.<br>Forscher, die das Gebiet mit Drohnen erkundeten, berichten von Warnzeichen aus bunten Steinen und einem Leguan, der demonstrativ ein Blatt auf ein Fernglas legte.<br>Einem mutigen Biologen gelang die Landung - er wurde allerdings sofort von einer Patrouille aus drei Leguanen in Sonnenbrillen umzingelt und höflich zurückgepaddelt.<br>Die Insel gilt nun als erstes autonomes Reptilien-Reservat. Zutritt nur mit Schuppen.",
+    "creator_id": 4,
+    "Hashtags": ["#LeguanInsel", "#ReptilienReich", "#Naturparadies", "#KeinZutritt"],
+    "Likes": 945,
+    "Comment_Count": 42,
+    "Creation_Date": "2025-05-22",
+    "Actuality": "true"
+  },
+  {
+    "id": 5,
+    "Title": "Wikinger Schwert Fundorte",
+    "Image": "https://tse2.mm.bing.net/th/id/OIP.CbsS0EGEOrAk_2A-Jd1nYgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "Article_Title": "Wikinger-Schwert in Berliner Späti entdeckt - Archäologen völlig fassungslos!",
+    "Article": "Ein unscheinbarer Kiosk in Berlin-Neukölln sorgt für Schlagzeilen: Beim Aufräumen seines Lagerraums fand der Besitzer ein perfekt erhaltenes Wikinger-Schwert zwischen leeren Mate-Kisten.<br>Experten datieren das Fundstück auf das 9. Jahrhundert - und vermuten, dass es über mysteriöse Handelsrouten mit dem Berliner Untergrundclub „Valhalla Rave“ in Verbindung steht.<br>Das Schwert trägt Runen, die grob übersetzt „Kein Eintritt ohne Bart“ bedeuten.<br>Seit dem Fund pilgern Historiker, Metalfans und Cosplayer gleichermaßen zum Späti.<br>Ein Wikinger-Nachfahre aus Oslo meldete bereits Eigentumsansprüche an.<br>Doch der Kioskbesitzer will es behalten - als Flaschenöffner.",
+    "creator_id": 1,
+    "Hashtags": ["#Wikinger", "#Fundstück", "#BerlinSpäti", "#Schwert"],
+    "Likes": 798,
+    "Comment_Count": 65,
+    "Creation_Date": "2025-04-14",
+    "Actuality": "false"
+  },
+  {
+    "id": 6,
+    "Title": "Smartphone Akku schnell leer Ursachen",
+    "Image": "https://th.bing.com/th/id/R.53c49fc71ddd0ab23fa308c4b7cba933?rik=WJQBwAzXOLkMrg&pid=ImgRaw&r=0",
+    "Article_Title": "Geheime Akku-Verschwörung entdeckt - Apps saugen Energie für Paralleluniversum!",
+    "Article": "Ein Team finnischer Physiker fand heraus, dass bestimmte Smartphone-Apps heimlich Energie in ein benachbartes Universum umleiten.<br>Vor allem Taschenlampen- und Wetter-Apps stehen unter Verdacht, als „Energieportale“ zu dienen.<br>Akkus leeren sich angeblich nicht durch Nutzung - sondern durch interdimensionale Steuerabgaben.<br>Besonders nachts registrierten Forscher mysteriöse Stromspitzen und kurze Öffnungen sogenannter „Pixel-Spalten“.<br>Tech-Konzerne schweigen, während erste Nutzer ihre Handys mit Alufolie einwickeln.<br>Experten raten: Flugmodus aktivieren, wenn das Universum nicht mitgeladen werden soll.",
+    "creator_id": 3,
+    "Hashtags": ["#AkkuVerschwörung", "#TechMystery", "#Paralleluniversum", "#Alufolie"],
+    "Likes": 1257,
+    "Comment_Count": 108,
+    "Creation_Date": "2025-06-07",
+    "Actuality": "true"
+  },
+  {
+    "id": 7,
+    "Title": "intermittierendes Fasten Vorteile",
+    "Image": "https://i.ytimg.com/vi/z8NG5UHQx2I/maxresdefault.jpg",
+    "Article_Title": "Intermittierendes Fasten macht plötzlich unsichtbar - Wissenschaft alarmiert!",
+    "Article": "Mehrere Teilnehmer eines Fasten-Experiments in Zürich berichten, nach 16 Stunden ohne Nahrung plötzlich nicht mehr im Spiegel sichtbar gewesen zu sein.<br>Ein Forscherteam vermutet, dass der Körper im Fastenzustand Quantenzustände erreicht, in denen Lichtstrahlen ihn umgehen.<br>Zwar kehrten alle Betroffenen nach dem ersten Bissen in die sichtbare Welt zurück, doch eine Testperson wurde beim Fasten mit einem Laserdrucker verwechselt.<br>Jetzt prüfen Behörden, ob intermittierendes Fasten als Tarnkappentechnologie gelten könnte.<br>Der Fitness-Hype bekommt damit eine ganz neue Dimension.",
+    "creator_id": 4,
+    "Hashtags": ["#Fasten", "#Unsichtbarkeit", "#Gesundheit", "#ScienceWow"],
+    "Likes": 1093,
+    "Comment_Count": 71,
+    "Creation_Date": "2025-05-11",
+    "Actuality": "false"
+  },
+  {
+    "id": 8,
+    "Title": "Mona Lisa Geheimnisse",
+    "Image": "https://tse4.mm.bing.net/th/id/OIP.S4beyMzceNdwwtXFlcgSgQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "Article_Title": "Mona Lisa lächelt wegen Steuertrick - Geheimes Dokument aufgetaucht!",
+    "Article": "Ein verschollenes Pergament, hinter dem Rahmen der Mona Lisa entdeckt, enthüllt: Ihr berühmtes Lächeln galt einem gelungenen Steuerbetrug im Florenz des 16. Jahrhunderts.<br>Demnach versteckte Leonardo da Vinci eine geheime Botschaft im Schatten ihrer linken Wange, die auf ein Offshore-Konto in Venedig hinweist.<br>Kunsthistoriker sind fassungslos - einige behaupten sogar, das Lächeln verändere sich seit der Entdeckung leicht zu einem Grinsen.<br>Das Louvre-Museum verstärkte die Sicherheitsmaßnahmen, da mehrere Finanzberater versuchten, nachts ins Gemälde einzudringen.<br>Mona Lisa: nicht nur Kunst, sondern offenbar auch Buchhaltung mit Stil.",
+    "creator_id": 2,
+    "Hashtags": ["#MonaLisa", "#KunstGeheimnis", "#Steuertrick", "#DaVinci"],
+    "Likes": 984,
+    "Comment_Count": 55,
+    "Creation_Date": "2025-03-30",
+    "Actuality": "false"
+  },
+  {
+    "id": 9,
+    "Title": "niedrigster Punkt der Erde",
+    "Image": "https://www.zdf.de/assets/noerdlicher-polarkreis-cc-100~1280x720?cb=1657526400225",
+    "Article_Title": "Niedrigster Punkt der Erde entdeckt - führt direkt zur Unterwelt?",
+    "Article": "Ein Expeditionsteam in der Antarktis hat bei Bohrungen unter dem Eis einen Hohlraum gefunden, der 17 Kilometer tiefer liegt als der Marianengraben.<br>Messgeräte fielen spurlos hinein - nur ein Echo mit den Worten „Zurückgehen“ kehrte zurück.<br>Forscher sprechen von einer möglichen natürlichen Passage ins Erdinnere, manche munkeln sogar: zur mythologischen Unterwelt.<br>Einige Teammitglieder berichten von seltsamen Träumen, seit sie den Schacht gesehen haben.<br>Die UN empfiehlt, den Eingang mit Eis zu versiegeln - bevor jemand oder *etwas* herauskommt.",
+    "creator_id": 2,
+    "Hashtags": ["#Unterwelt", "#Antarktis", "#Tiefpunkt", "#Mysterium"],
+    "Likes": 1032,
+    "Comment_Count": 68,
+    "Creation_Date": "2025-05-25",
+    "Actuality": "true"
+  },
+  {
+    "id": 10,
+    "Title": "Kaffee Gesundheit Vorteile",
+    "Image": "https://tse1.mm.bing.net/th/id/OIP.SSe0NjW3kpHMzZAXs_uhcQHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "Article_Title": "Kaffee heilt alles - neue Studie verblüfft Wissenschaftler!",
+    "Article": "Forscher der Universität Kaffeeland veröffentlichen eine Metastudie: Regelmäßiger Kaffeekonsum soll Herzkrankheiten, Depressionen und sogar Haarausfall heilen - und das besser als etablierte Medikamente. Der Clou: Entscheidend ist die Zubereitung bei exakt 93 °C und das Trinken bei Sonnenaufgang. Kritiker warnen vor übertriebener Euphorie, doch Kaffeefans feiern den morgendlichen Espresso nun als Elixier der Gesundheit.",
+    "creator_id": 1,
+    "Hashtags": ["#KaffeeIstLeben", "#KoffeinKraft", "#Wunderbohne", "#Gesundheit"],
+    "Likes": 1478,
+    "Comment_Count": 96,
+    "Creation_Date": "2025-06-08",
+    "Actuality": "true"
+  }
+];
+
+const creator = [
+  {
+    "id": 1,
+    "Username": "author",
+    "Followers": 6,
+    "Profile_Img": "https://www.clevergirlauthor.com/wp-content/uploads/2022/07/How-to-become-an-author.png"
+  },
+  {
+    "id": 2,
+    "Username": "wild_inkling",
+    "Followers": 152,
+    "Profile_Img": "https://preview.redd.it/snoovatar/avatars/a8610345-4658-4b5d-83f0-f666d2e3f12e-headshot.png?width=256&height=256&crop=smart&auto=webp&s=2c88fb22f73c2fe11f86d1b69b310acd428c98eb"
+  },
+  {
+    "id": 3,
+    "Username": "lore_lens",
+    "Followers": 87,
+    "Profile_Img": "https://images.uesp.net/a/ab/ON-item-Jagged_Lens_of_Compulsion.jpg"
+  },
+  {
+    "id": 4,
+    "Username": "FactTwister",
+    "Followers": 231,
+    "Profile_Img": "https://tse2.mm.bing.net/th/id/OIP.8L8-bG4rjdU69H1MR05ANAHaH7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  }
+];
+
+  blog.forEach(entry => renderBlogCard(entry, creator));
+});
+function renderBlogCard(data, creator) {
+  const template = document.getElementById('blog-card-template').innerHTML;
+
+  const user = creator.find(c => c.id === data.creator_id);
+  const username = user?.Username ?? 'Unbekannt';
+  const followers = user?.Followers ?? 0;
+  const profileImg = user?.Profile_Img;
+
+  const html = template
+    .replace('{{title}}', data.Article_Title)
+    .replace('{{image}}', data.Image)
+    .replace('{{text}}', data.Article)
+    .replace('{{creator_id}}', data.creator_id)
+    .replace('{{likes}}', data.Likes)
+    .replace('{{comment_count}}', data.Comment_Count)
+    .replace('{{creation_date}}', data.Creation_Date)
+    .replace('{{hashtags}}', data.Hashtags.join(' '))
+    .replace('{{actuality}}', data.Actuality)
+    .replace('{{username}}', username)
+    .replace('{{followers}}', followers)
+    .replace('{{profile_img}}', profileImg);
+
+  const container = document.getElementById('blog-container');
+  container.insertAdjacentHTML('beforeend', html);
+}
+
+  container.insertAdjacentHTML('beforeend', html);
+
+function toggleCard(cardElement) {
+  cardElement.classList.toggle('expanded');
+}
