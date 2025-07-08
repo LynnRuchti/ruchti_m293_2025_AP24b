@@ -217,3 +217,18 @@ body {
     footer a:hover {
       text-decoration: underline;
     }
+        .back-button {
+      background-color: #c1d18b;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      align-self: center;
+    }
+
+    .back-button:hover {
+      background-color: #b1c07c;
+    }

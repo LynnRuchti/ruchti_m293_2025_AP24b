@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Author Profile</title>
+    <link rel="stylesheet" href="SingleAuthorPage.css" />
+</head>
+<body>
+  <div class="wrapper"><main>
+  <div class="container">
+    <div id="blog-placeholder"></div>
+    <div class="blog-list" id="blog-list"></div>
+  </div>
+
+  <script>
+
+    async function loadData() {
+  try {
+    const creatorsResponse = await fetch('Creators.json');
+    const creators = await creatorsResponse.json();
+
+    if (!creators || creators.length === 0) {
+      document.getElementById('blog-placeholder').innerHTML =
+        "<p style='color: red; text-align: center;'>Authors not found.</p>";
+      return;
+    }
+
+    // Leere den Container für Autoren
+    const container = document.getElementById('blog-placeholder');
+    container.innerHTML = '';
+
+    // Jeden Autor durchlaufen und anzeigen
+    creators.forEach(creator => {
+      const avatarContent = creator.Profile_Img
+        ? ""
+        : creator.Username[0].toUpperCase();
+
+      const profileHTML = `
+        <div class="profile-card">
+          <div class="avatar" style="background-image: url('${creator.Profile_Img || ""}')">
+            ${avatarContent}
+          </div>
+          <p><strong>@${creator.Username}</strong></p>
+          <p class="stats">${creator.Followers} Followers</p>
+          <a class="back-button"  href="SingleAuthorPage.html?id=${creator.id}">Show Blogs</a>
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', profileHTML);
+    });
+
+  } catch (error) {
+    console.error("Error loading authors:", error);
+    document.getElementById('blog-placeholder').innerHTML =
+      "<p style='color: red; text-align: center;'>Fehler beim Laden der Autoren.</p>";
+  }
+}
+
+
+    async function loadBlogEntry(entry) {
+      const templateText = await fetch('./Molecule/BlogElement.html').then(res => res.text());
+      const previewText = entry.Article.split(/\s+/).slice(0, 20).join(' ') + '...';
+
+      const html = templateText
+        .replace('{{title}}', entry.Article_Title)
+        .replace('{{previewText}}', previewText)
+        .replace('{{id}}', entry.id)
+        .replace('{{image}}', entry.Image)
+        .replace('{{creator_id}}', entry.creator_id);
+
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = html;
+      document.getElementById('blog-list').appendChild(wrapper);
+    }
+
+    window.onload = loadData;
+  </script>
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('expanded');
+    }
+  </script>
+</main>
+  <footer>
+  <p style="padding: 10px">&copy; 2025 TBZ Modul 293 Project. All texts belong to chatGPT. Images are form the web and don't belong to me.</p>
+  <p>
+    <a href="./BlogHomePage.html">Home</a> | 
+    <a href="./AuthorPage.html">Authors</a> | 
+    <a href="./NewsLetterPage.html">News Letter</a> | 
+    <a href="./AboutUs.html">About Us</a>
+  </p>
+</footer>
+</div>
+</body>
+
+</html>
